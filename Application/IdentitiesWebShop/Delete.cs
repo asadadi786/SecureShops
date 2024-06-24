@@ -25,8 +25,8 @@ namespace Application.IdentitiesWebShop
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var identity = await _context.Identities
-                    .FirstOrDefaultAsync(i => i.WebShopId == request.WebShopId);
-
+                    .FindAsync(request.WebShopId);
+//                    .FirstOrDefaultAsync(i => i.WebShopId == request.WebShopId);
                 if (identity == null)
                 {
                     // Handle not found

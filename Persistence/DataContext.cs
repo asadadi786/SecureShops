@@ -12,13 +12,13 @@ namespace Persistence
 
         public DbSet<WebShop> WebShops { get; set; }
 
-        public DbSet<Identity> Identities { get; set; }
+        public DbSet<IdentityWebShop> Identities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Identity>()
+            modelBuilder.Entity<IdentityWebShop>()
                 .HasOne(i => i.WebShop)
                 .WithMany()
                 .HasForeignKey(i => i.WebShopId);

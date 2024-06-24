@@ -10,7 +10,7 @@ namespace Application.IdentitiesWebShop
     {
         public class Command : IRequest
         {
-            public Identity Identity { get; set; }
+            public IdentityWebShop Identity { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>

@@ -9,12 +9,12 @@ namespace Application.IdentitiesWebShop
 {
     public class Details
     {
-        public class Query : IRequest<Identity>
+        public class Query : IRequest<IdentityWebShop>
         {
             public Guid WebShopId { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Identity>
+        public class Handler : IRequestHandler<Query, IdentityWebShop>
         {
             private readonly DataContext _context;
 
@@ -23,10 +23,11 @@ namespace Application.IdentitiesWebShop
                 _context = context;
             }
 
-            public async Task<Identity> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<IdentityWebShop> Handle(Query request, CancellationToken cancellationToken)
             {
                 return await _context.Identities
-                    .FirstOrDefaultAsync(i => i.WebShopId == request.WebShopId);
+                    .FindAsync(request.WebShopId);
+
             }
         }
     }
