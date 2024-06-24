@@ -17,6 +17,7 @@ namespace SecureShop.API.Controllers
             return await Mediator.Send(new List.Query { WebShopId = webShopId });
         }
 
+
         [HttpGet("{webShopId}/details")]
         public async Task<ActionResult<IdentityWebShop>> GetIdentity(Guid webShopId)
         {
